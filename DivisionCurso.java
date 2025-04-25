@@ -59,4 +59,43 @@ public class DivisionCurso {
     public void setCatedras(List<Catedra> catedras) {
         this.catedras = catedras;
     }
+
+    // A.4
+    public Alumno mejorAlumnoDivisionCurso(){
+        Alumno mejorAlumno = null; // Acá vamos a guardar el mejor
+        double mejorPromedio = 0;
+
+        // Recorremos todas las cátedras
+        for (Catedra catedra : catedras) {
+            // Recorremos todos los alumnos de cada cátedra
+            for (Alumno alumno : catedra.getAlumnos()) {
+                List<Nota> notas = alumno.getNotas();
+                int cantidad = 0;
+                double suma = 0;
+                boolean tieneRecuperatorio = false;
+
+                // Recorremos las notas del alumno
+                for (Nota nota : notas) {
+                    if (nota.isEsRecuperatorio()) {
+                        tieneRecuperatorio = true;  //si el alumno tiene recuperatorios, no se cuenta.
+                        break;
+                    }
+                    cantidad++;
+                    suma += nota.getValor();
+                }
+
+                // Evaluamos si cumple las condiciones (de tener 5 notas y que no haya recuperado)
+                if (!tieneRecuperatorio && cantidad >= 5) {
+                    double promedio = suma / cantidad;
+                    if (promedio > mejorPromedio) {
+                        mejorPromedio = promedio;
+                        mejorAlumno = alumno;
+                    }
+                }
+            }
+        }
+
+        return mejorAlumno;
+    }
+
 }
