@@ -58,4 +58,21 @@ public class Catedra {
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
     }
+
+    public Alumno mejorAlumnoCatedra() {
+        Alumno mejorAlumno = null;
+        double mejorPromedio = 0;
+
+        for (Alumno alumno : alumnos) {
+            double promedio = alumno.promedioNotas(this.codigo);
+            if (promedio > mejorPromedio) {
+                mejorPromedio = promedio;
+                mejorAlumno = alumno;
+            }
+        }
+
+        return mejorAlumno;
+    }
+
+
 }
