@@ -10,6 +10,7 @@ public class DivisionCurso {
     private int division;
     private Escuela escuela;
     private List<Catedra> catedras = new ArrayList();
+    private List<Alumno> alumnos = new ArrayList();
 
     public DivisionCurso() {
     }
@@ -58,6 +59,14 @@ public class DivisionCurso {
 
     public void setCatedras(List<Catedra> catedras) {
         this.catedras = catedras;
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
     }
 
     // A.4

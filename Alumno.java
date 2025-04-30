@@ -89,6 +89,13 @@ public class Alumno {
         }
         return mejor;
     }
+    public boolean tieneDesaprobados() {
+        for (Nota nota : notas) {
+            if (nota.getValor() < 6) return true;
+        }
+        return false;
+    }
+
 
     public double promedioNotas(Integer codigoCatedra){
         double suma = 0;
